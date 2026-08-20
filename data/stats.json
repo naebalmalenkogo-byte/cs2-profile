@@ -1,0 +1,288 @@
+{
+  "meta": {
+    "version": 1,
+    "updated": "2026-08-19T15:37:37.721Z",
+    "description": "База данных профиля CS2 — обновляется автоматически GitHub Actions"
+  },
+  "player": {
+    "nickname": "s1mpleFAN",
+    "steamId": "76561198000000000",
+    "country": "🇷🇺",
+    "steamLevel": 42,
+    "created": "Игрок с 2019 года",
+    "totalHours": 3142,
+    "avatar": ""
+  },
+  "stats": {
+    "cyber": {
+      "rating": 1847,
+      "tier": 9,
+      "tierName": "IX ранг"
+    },
+    "premier": {
+      "rating": 21450,
+      "tierName": "25 000"
+    },
+    "faceit": {
+      "level": 9,
+      "elo": 2145,
+      "tierName": "Мастер"
+    },
+    "months": [
+      "Сен",
+      "Окт",
+      "Ноя",
+      "Дек",
+      "Янв",
+      "Фев",
+      "Мар",
+      "Апр",
+      "Май",
+      "Июн",
+      "Июл",
+      "Авг"
+    ],
+    "killsByMonth": [
+      385,
+      412,
+      468,
+      395,
+      442,
+      510,
+      556,
+      601,
+      478,
+      1052,
+      1204,
+      1198
+    ],
+    "accByMonth": [
+      22.1,
+      23,
+      22.6,
+      24.2,
+      23.8,
+      25.1,
+      24.6,
+      26,
+      25.3,
+      27.1,
+      27.9,
+      66.9
+    ],
+    "all": {
+      "kills": 48793,
+      "headshots": 31327,
+      "hsPercent": 64.3,
+      "accuracy": 26.1,
+      "kd": 1.43,
+      "matches": 2347,
+      "wins": 1342,
+      "losses": 958,
+      "winrate": 58.3,
+      "mvps": 687,
+      "clutches": 214,
+      "aces": 47,
+      "plants": 351,
+      "firstKills": 6102,
+      "headshotsHit": 18794
+    },
+    "month": {
+      "kills": 1198,
+      "headshots": 796,
+      "hsPercent": 66.7,
+      "accuracy": 27.9,
+      "kd": 1.57,
+      "matches": 119,
+      "wins": 74,
+      "losses": 44,
+      "winrate": 62.7,
+      "mvps": 40,
+      "clutches": 14,
+      "aces": 5,
+      "plants": 31,
+      "firstKills": 158,
+      "headshotsHit": 512
+    },
+    "matches": [
+      {
+        "map": "Mirage",
+        "icon": "🗺",
+        "win": true,
+        "score": "13 — 8",
+        "k": 27,
+        "d": 14,
+        "a": 9,
+        "hs": 71,
+        "rating": "+27",
+        "date": "Сегодня"
+      },
+      {
+        "map": "Anubis",
+        "icon": "🏜",
+        "win": true,
+        "score": "13 — 10",
+        "k": 31,
+        "d": 18,
+        "a": 5,
+        "hs": 64,
+        "rating": "+31",
+        "date": "Сегодня"
+      },
+      {
+        "map": "Dust2",
+        "icon": "🏙",
+        "win": false,
+        "score": "11 — 13",
+        "k": 22,
+        "d": 19,
+        "a": 11,
+        "hs": 58,
+        "rating": "-14",
+        "date": "Вчера"
+      },
+      {
+        "map": "Inferno",
+        "icon": "🔥",
+        "win": true,
+        "score": "13 — 5",
+        "k": 34,
+        "d": 11,
+        "a": 7,
+        "hs": 77,
+        "rating": "+42",
+        "date": "Вчера"
+      },
+      {
+        "map": "Nuke",
+        "icon": "☢",
+        "win": false,
+        "score": "9 — 13",
+        "k": 18,
+        "d": 20,
+        "a": 6,
+        "hs": 49,
+        "rating": "-18",
+        "date": "2 дня назад"
+      },
+      {
+        "map": "Ancient",
+        "icon": "🏛",
+        "win": true,
+        "score": "13 — 9",
+        "k": 26,
+        "d": 15,
+        "a": 8,
+        "hs": 66,
+        "rating": "+24",
+        "date": "3 дня назад"
+      },
+      {
+        "map": "Mirage",
+        "icon": "🗺",
+        "win": false,
+        "score": "10 — 13",
+        "k": 24,
+        "d": 21,
+        "a": 4,
+        "hs": 61,
+        "rating": "-12",
+        "date": "3 дня назад"
+      },
+      {
+        "map": "Overpass",
+        "icon": "🌉",
+        "win": true,
+        "score": "13 — 6",
+        "k": 29,
+        "d": 12,
+        "a": 10,
+        "hs": 73,
+        "rating": "+35",
+        "date": "4 дня назад"
+      },
+      {
+        "map": "Vertigo",
+        "icon": "🏗",
+        "win": true,
+        "score": "13 — 7",
+        "k": 21,
+        "d": 13,
+        "a": 12,
+        "hs": 55,
+        "rating": "+19",
+        "date": "5 дней назад"
+      },
+      {
+        "map": "Dust2",
+        "icon": "🏙",
+        "win": false,
+        "score": "12 — 14",
+        "k": 25,
+        "d": 23,
+        "a": 7,
+        "hs": 62,
+        "rating": "-16",
+        "date": "6 дней назад"
+      }
+    ],
+    "achievements": [
+      {
+        "ico": "🃏",
+        "title": "Ace Machine",
+        "desc": "5 эйсов за месяц",
+        "prog": 100
+      },
+      {
+        "ico": "💀",
+        "title": "One-Tap God",
+        "desc": "Голова — 66% киллов",
+        "prog": 100
+      },
+      {
+        "ico": "🕯",
+        "title": "Clutch Master",
+        "desc": "14 клатчей за месяц",
+        "prog": 100
+      },
+      {
+        "ico": "🎯",
+        "title": "Deagle Prince",
+        "desc": "600+ киллов с Deagle",
+        "prog": 84
+      },
+      {
+        "ico": "⚔",
+        "title": "Киллер недели",
+        "desc": "34 килла за один матч",
+        "prog": 100
+      },
+      {
+        "ico": "🌙",
+        "title": "Night Owl",
+        "desc": "300 часов ночью",
+        "prog": 76
+      },
+      {
+        "ico": "💣",
+        "title": "Bomb Whisperer",
+        "desc": "351 закладка бомбы",
+        "prog": 100
+      },
+      {
+        "ico": "🔥",
+        "title": "Win Streak",
+        "desc": "12 побед подряд",
+        "prog": 72
+      }
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-08-19",
+      "kills": 1198,
+      "hsPercent": 66.7,
+      "rating": 1851
+    }
+  ]
+}
