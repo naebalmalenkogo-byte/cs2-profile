@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS2 PROFILE — Статистика и рейтинг</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+<body>
+  <div class="bg">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <canvas id="particles"></canvas>
+  </div>
+
+  <!-- ======================= ONBOARDING ======================= -->
+  <div id="onboarding" class="onboarding hidden">
+    <div class="onboarding-card">
+      <div class="logo-big">
+        <span class="logo-icon">⌖</span>
+        <h1>CS2<span>PROFILE</span></h1>
+      </div>
+      <p class="tagline">Твой профиль, статистика и рейтинги в одном месте</p>
+
+      <div class="steps">
+        <div class="step active" data-step="1">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Привяжи Steam</h3>
+            <p>Вставь Steam ID или ссылку на профиль</p>
+          </div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Добавь Faceit (по желанию)</h3>
+            <p>Ник и ключ для реальных данных Faceit</p>
+          </div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Готово</h3>
+            <p>Смотри свой профиль, статистику и графики</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="connect-form" class="connect-form" autocomplete="off">
+        <div class="field">
+          <label for="steamid">Steam ID64 или ссылка на профиль *</label>
+          <input id="steamid" name="steamid" type="text" placeholder="76561198000000000 или steamcommunity.com/profiles/..." required />
+          <p class="hint">Найди свой ID: <a href="https://steamidfinder.com" target="_blank" rel="noopener">steamidfinder.com</a> или Steam → Профиль → Правка → в конце ссылки</p>
+        </div>
+        <div class="field">
+          <label for="steamkey">Steam Web API ключ <span class="opt">(необязательно)</span></label>
+          <input id="steamkey" name="steamkey" type="password" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+          <p class="hint">Бесплатно: <a href="https://steamcommunity.com/dev/apikey" target="_blank" rel="noopener">steamcommunity.com/dev/apikey</a>. Без него покажем демо-статистику</p>
+        </div>
+        <div class="field">
+          <label for="facenick">Faceit ник <span class="opt">(необязательно)</span></label>
+          <input id="facenick" name="facenick" type="text" placeholder="например: s1mple" />
+        </div>
+        <div class="field">
+          <label for="facekey">Faceit API ключ <span class="opt">(необязательно)</span></label>
+          <input id="facekey" name="facekey" type="password" placeholder="ххх-ххх-ххх" />
+          <p class="hint">Выдаётся на <a href="https://developers.faceit.com/" target="_blank" rel="noopener">developers.faceit.com</a></p>
+        </div>
+
+        <div class="field">
+          <label for="captcha-input">Капча — введи код с картинки</label>
+          <div class="captcha-row">
+            <canvas id="captcha" width="150" height="46" title="Обновить"></canvas>
+            <button type="button" class="captcha-refresh" id="captcha-refresh" title="Обновить код">⟳</button>
+            <input id="captcha-input" name="captcha" type="text" maxlength="5" placeholder="Код с картинки" autocomplete="off" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" id="connect-btn">
+          <span class="btn-label">Подключить профиль</span>
+          <span class="btn-spinner hidden"></span>
+        </button>
+        <div class="form-error" id="form-error"></div>
+      </form>
+
+      <button class="demo-link" id="demo-link">Посмотреть демо-профиль без привязки →</button>
+    </div>
+  </div>
+
+  <!-- ======================= DASHBOARD ======================= -->
+  <div id="dashboard" class="dashboard hidden">
+    <nav class="topbar">
+      <div class="logo"><span class="logo-icon">⌖</span> CS2<span>PROFILE</span></div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-tab="overview">Обзор</button>
+        <button class="tab" data-tab="stats">Статистика</button>
+        <button class="tab" data-tab="matches">Матчи</button>
+        <button class="tab" data-tab="achievements">Достижения</button>
+      </div>
+      <div class="topbar-right">
+        <div class="connect-state" id="connect-state">
+          <span class="dot"></span><span id="connect-state-text">Steam связан</span>
+        </div>
+        <button class="icon-btn" id="reconnect-btn" title="Сменить аккаунт">⚙</button>
+      </div>
+    </nav>
+
+    <main class="content">
+      <!-- HERO -->
+      <section class="hero glass" id="tab-overview">
+        <div class="hero-avatar">
+          <img id="avatar" alt="avatar" />
+          <div class="avatar-ring"></div>
+          <div class="level-badge" id="steam-level">??</div>
+        </div>
+        <div class="hero-info">
+          <div class="hero-name-row">
+            <h1 id="nickname">—</h1>
+            <span class="country" id="country"></span>
+          </div>
+          <div class="hero-tags">
+            <span class="tag tag-cyber" id="hero-cyber"><b id="cyber-num">—</b> CyberShore</span>
+            <span class="tag tag-premier" id="hero-premier"><b id="premier-num">—</b> Premier</span>
+            <span class="tag tag-faceit" id="hero-faceit"><b id="faceit-num">—</b> Faceit</span>
+          </div>
+          <div class="hero-meta" id="hero-meta"></div>
+        </div>
+        <div class="hero-side" id="hero-side"></div>
+      </section>
+
+      <!-- QUICK STATS -->
+      <section class="quick" id="tab-overview">
+        <div class="section-head">
+          <h2>Быстрая статистика</h2>
+          <div class="seg" id="range-seg">
+            <button class="seg-btn" data-range="all">За всё время</button>
+            <button class="seg-btn active" data-range="month">За месяц</button>
+          </div>
+        </div>
+        <div class="grid-stats" id="grid-stats"></div>
+      </section>
+
+      <!-- CHARTS -->
+      <section class="charts">
+        <div class="card chart-card" id="tab-stats">
+          <div class="card-head">
+            <h3>Киллы по месяцам</h3>
+            <span class="card-sub" id="chart-kills-total"></span>
+          </div>
+          <div class="chart-wrap">
+            <svg id="kills-chart" viewBox="0 0 800 260" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+        <div class="card chart-card" id="tab-stats">
+          <div class="card-head">
+            <h3>Точность попаданий</h3>
+            <span class="card-sub">по месяцам, %</span>
+          </div>
+          <div class="chart-wrap">
+            <svg id="accuracy-chart" viewBox="0 0 800 260" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED STATS -->
+      <section class="card detail" id="tab-stats">
+        <div class="card-head">
+          <h3>Детальная статистика</h3>
+          <div class="seg seg-sm" id="range-seg-2">
+            <button class="seg-btn" data-range="all">За всё время</button>
+            <button class="seg-btn active" data-range="month">За месяц</button>
+          </div>
+        </div>
+        <div class="detail-grid" id="detail-grid"></div>
+      </section>
+
+      <!-- MATCHES -->
+      <section class="card" id="tab-matches">
+        <div class="card-head">
+          <h3>Последние матчи</h3>
+          <span class="card-sub" id="matches-sub"></span>
+        </div>
+        <div class="table-wrap">
+          <table class="matches-table">
+            <thead>
+              <tr><th>Карта</th><th>Результат</th><th>Счёт</th><th>K / D / A</th><th>HS%</th><th>Рейтинг</th></tr>
+            </thead>
+            <tbody id="matches-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS -->
+      <section class="achieve-grid" id="tab-achievements">
+        <div class="card-head full">
+          <h3>Достижения</h3>
+        </div>
+        <div id="achieve-body"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="watermark" id="watermark"></div>
+  <div class="guard" id="guard">Защита сайта активна</div>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
