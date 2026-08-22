@@ -9,12 +9,12 @@
 
   /* ---------- DEMO DATA (используется без API-ключей) ---------- */
   const DEMO = {
-    name: 's1mpleFAN',
-    steamId: '76561198000000000',
-    country: 'RU',
-    countryEmoji: '🇷🇺',
-    steamLevel: 42,
-    created: 'Игрок с 2019 года',
+    name: 'ТВОЙ PROFILE',
+    steamId: '',
+    country: '',
+    countryEmoji: '',
+    steamLevel: 0,
+    created: '',
     cyber: { rating: 1847, tier: 9, tierName: 'IX ранг' },
     premier: { rating: 21450, tierName: '25 000' },
     faceit: { level: 9, elo: 2145, tierName: 'Мастер' },
