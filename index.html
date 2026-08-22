@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
   <div class="bg">
@@ -59,7 +59,7 @@
         <div class="field">
           <label for="steamkey">Steam Web API ключ <span class="opt">(необязательно)</span></label>
           <input id="steamkey" name="steamkey" type="password" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
-          <p class="hint">Бесплатно: <a href="https://steamcommunity.com/dev/apikey" target="_blank" rel="noopener">steamcommunity.com/dev/apikey</a>. Без него покажем демо-статистику</p>
+          <p class="hint">Бесплатно: <a href="https://steamcommunity.com/dev/apikey" target="_blank" rel="noopener">steamcommunity.com/dev/apikey</a>. С ключом подтянем реальный ник, аватар и страну из Steam</p>
         </div>
         <div class="field">
           <label for="facenick">Faceit ник <span class="opt">(необязательно)</span></label>
@@ -86,8 +86,6 @@
         </button>
         <div class="form-error" id="form-error"></div>
       </form>
-
-      <button class="demo-link" id="demo-link">Посмотреть демо-профиль без привязки →</button>
     </div>
   </div>
 
@@ -207,6 +205,6 @@
   <div class="toast" id="toast"></div>
   <div class="watermark" id="watermark"></div>
   <div class="guard" id="guard">Защита сайта активна</div>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
