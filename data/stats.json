@@ -5,12 +5,12 @@
     "description": "База данных профиля CS2 — обновляется автоматически GitHub Actions"
   },
   "player": {
-    "nickname": "s1mpleFAN",
-    "steamId": "76561198000000000",
-    "country": "🇷🇺",
-    "steamLevel": 42,
-    "created": "Игрок с 2019 года",
-    "totalHours": 3142,
+    "nickname": "ТВОЙ PROFILE",
+    "steamId": "",
+    "country": "",
+    "steamLevel": 0,
+    "created": "",
+    "totalHours": 0,
     "avatar": ""
   },
   "stats": {
