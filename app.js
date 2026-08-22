@@ -316,8 +316,8 @@
       <div class="mini-stat"><div class="num" id="ms-kd">${data.all.kd.toFixed(2)}</div><div class="lbl">K / D</div></div>
     `;
 
-    $('#connect-state-text').textContent = data.real ? 'Steam связан' : 'Демо-режим';
-    $('#connect-state .dot').classList.toggle('off', !data.real);
+    $('#connect-state-text').textContent = 'Steam связан';
+    $('#connect-state .dot').classList.remove('off');
   }
 
   /* ---------- RENDER: STATS ---------- */
@@ -525,8 +525,7 @@
       render();
       switchTab('overview');
       setRange('month');
-      toast(data.real ? 'Профиль подключён!' : 'Демо-режим: подключи Steam API ключ для реальных данных', 4500);
-      if (data.real) toast('Статистика CS2: демо-данные (нужны доп. источники)', 4500);
+      toast('Профиль подключён!', 3500);
     } catch (e) {
       err.textContent = 'Ошибка: ' + e.message;
     } finally {
@@ -653,17 +652,6 @@
   $('#captcha').addEventListener('click', drawCaptcha);
 
   $('#connect-form').addEventListener('submit', connect);
-  $('#demo-link').addEventListener('click', async () => {
-    settings = null;
-    localStorage.removeItem(STORAGE_KEY);
-    data = await buildProfile();
-    $('#onboarding').classList.add('hidden');
-    $('#dashboard').classList.remove('hidden');
-    render();
-    switchTab('overview');
-    setRange('month');
-    toast('Демо-профиль загружен. Подключи свой Steam в настройках ⚙');
-  });
   $('#reconnect-btn').addEventListener('click', showOnboarding);
 
   $$('.tab').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
